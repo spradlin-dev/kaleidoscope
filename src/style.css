@@ -133,6 +133,13 @@ button:disabled {
   color: #a79fbd;
 }
 
+.range-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #a79fbd;
+}
+
 progress {
   width: 100%;
 }

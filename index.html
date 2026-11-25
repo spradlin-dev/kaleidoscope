@@ -14,8 +14,22 @@
         <section>
           <h2>Colors</h2>
           <div id="palette"></div>
+          <label>
+            Shade variety
+            <input
+              id="shade-variety"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+            />
+          </label>
           <h3>Background</h3>
           <div id="background"></div>
+          <label>
+            Glow
+            <input id="glow" type="range" min="0" max="100" value="70" />
+          </label>
         </section>
 
         <section>
@@ -44,6 +58,30 @@
             </select>
           </label>
           <button id="new-pattern" type="button">New pattern</button>
+        </section>
+
+        <section>
+          <h2>Depth of field</h2>
+          <label>
+            Focus
+            <input id="focus" type="range" min="0" max="100" value="50" />
+            <span class="range-ends" aria-hidden="true"
+              ><span>Near</span><span>Far</span></span
+            >
+          </label>
+          <label>
+            Blur
+            <input id="blur" type="range" min="0" max="100" value="60" />
+          </label>
+        </section>
+
+        <section>
+          <h2>Borders</h2>
+          <div id="border-color"></div>
+          <label>
+            Width
+            <input id="border-width" type="range" min="0" max="100" value="0" />
+          </label>
         </section>
 
         <section>

@@ -5,7 +5,12 @@ import {
   type ExportProgress,
   type GifOptions,
 } from "./gifExport";
-import { createPieces, type Piece } from "./objectCell";
+import {
+  createGlowBlobs,
+  createPieces,
+  type GlowBlob,
+  type Piece,
+} from "./objectCell";
 import { randomSeed } from "./random";
 import { Scene, type Look } from "./scene";
 
@@ -23,6 +28,11 @@ const slicesInput = element<HTMLSelectElement>("slices");
 const piecesInput = element<HTMLInputElement>("pieces");
 const piecesValue = element<HTMLOutputElement>("pieces-value");
 const cellTurnsInput = element<HTMLSelectElement>("cell-turns");
+const shadeVarietyInput = element<HTMLInputElement>("shade-variety");
+const glowInput = element<HTMLInputElement>("glow");
+const focusInput = element<HTMLInputElement>("focus");
+const blurInput = element<HTMLInputElement>("blur");
+const borderWidthInput = element<HTMLInputElement>("border-width");
 const loopSecondsInput = element<HTMLInputElement>("loop-seconds");
 const loopSecondsValue = element<HTMLOutputElement>("loop-seconds-value");
 const gifSizeInput = element<HTMLSelectElement>("gif-size");
@@ -39,7 +49,9 @@ const exportLink = element<HTMLAnchorElement>("export-link");
 let seed = randomSeed();
 let palette = ["#ff595e", "#ffca3a", "#8ac926", "#1982c4", "#6a4c93"];
 let background = "#14101f";
+let borderColor = "#111111";
 let pieces: Piece[] = [];
+let blobs: GlowBlob[] = [];
 let exportUrl: string | null = null;
 let exportController: AbortController | null = null;
 
@@ -47,11 +59,27 @@ function regeneratePieces(): void {
   pieces = createPieces(seed, Number(piecesInput.value));
 }
 
+function regeneratePattern(): void {
+  regeneratePieces();
+  blobs = createGlowBlobs(seed);
+}
+
+function sliderFraction(input: HTMLInputElement): number {
+  return Number(input.value) / 100;
+}
+
 function currentLook(): Look {
   return {
     pieces,
+    blobs,
     palette,
+    shadeVariety: sliderFraction(shadeVarietyInput),
     background,
+    glow: sliderFraction(glowInput),
+    focus: sliderFraction(focusInput),
+    blur: sliderFraction(blurInput),
+    borderColor,
+    borderWidth: sliderFraction(borderWidthInput),
     slices: Number(slicesInput.value),
     cellTurns: Number(cellTurnsInput.value),
   };
@@ -187,6 +215,11 @@ element("background").append(
     background = hex;
   }),
 );
+element("border-color").append(
+  createColorField(borderColor, "Border color", (hex) => {
+    borderColor = hex;
+  }),
+);
 
 piecesInput.addEventListener("input", () => {
   regeneratePieces();
@@ -194,7 +227,7 @@ piecesInput.addEventListener("input", () => {
 });
 element("new-pattern").addEventListener("click", () => {
   seed = randomSeed();
-  regeneratePieces();
+  regeneratePattern();
 });
 for (const input of [loopSecondsInput, gifFpsInput]) {
   input.addEventListener("input", updateLabels);
@@ -202,6 +235,6 @@ for (const input of [loopSecondsInput, gifFpsInput]) {
 exportButton.addEventListener("click", runExport);
 cancelButton.addEventListener("click", () => exportController?.abort());
 
-regeneratePieces();
+regeneratePattern();
 updateLabels();
 startPreview();
