@@ -96,7 +96,7 @@ out vec4 fragColor;
 
 // Signed distance to a polygon outline (negative inside), after Inigo Quilez.
 float polygonDistance(vec2 p, int count) {
-  // Filled one by one: some Android drivers (ARM Mali) reject the shader if this uses an array constructor.
+  // Explicit highp and filled one by one: ARM Mali GPUs on Android reject the array-constructor form ("no default precision").
   highp vec2 v[MAX_POINTS];
   v[0] = v_points01.xy;
   v[1] = v_points01.zw;

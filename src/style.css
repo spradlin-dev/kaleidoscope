@@ -206,3 +206,31 @@ progress {
   line-height: 1.5;
   text-align: center;
 }
+
+@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100dvh;
+  }
+
+  .stage {
+    --stage-padding: 0.75rem;
+    order: -1;
+  }
+
+  #preview {
+    width: min(100%, 55svh);
+  }
+
+  .controls {
+    border-right: none;
+    border-top: 1px solid #2a2438;
+  }
+
+  /* iPhones zoom the page when a text box smaller than 16px gets focus. */
+  select,
+  input[type="text"] {
+    font-size: 16px;
+  }
+}
