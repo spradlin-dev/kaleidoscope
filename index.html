@@ -87,15 +87,19 @@
           </label>
           <p class="hint">
             All movement is timed to fit the loop exactly, so a longer loop
-            means slower movement. It also makes the GIF bigger.
+            means slower movement. It also makes the exported file bigger.
           </p>
         </section>
 
         <section>
-          <h2>Export GIF</h2>
+          <h2>Export</h2>
+          <label>
+            Format
+            <select id="export-format"></select>
+          </label>
           <label>
             Size
-            <select id="gif-size">
+            <select id="export-size">
               <option value="360">360 × 360</option>
               <option value="480" selected>480 × 480</option>
               <option value="720">720 × 720</option>
@@ -104,22 +108,31 @@
           </label>
           <label>
             Smoothness
-            <select id="gif-fps">
+            <select id="export-fps">
               <option value="20">20 frames per second</option>
               <option value="25" selected>25 frames per second</option>
               <option value="50">50 frames per second</option>
             </select>
           </label>
-          <p id="gif-summary" class="hint"></p>
+          <p id="export-summary" class="hint"></p>
           <div class="export-actions">
-            <button id="export-gif" type="button">Export GIF</button>
-            <button id="cancel-export" type="button" hidden>Cancel</button>
+            <button id="export-start" type="button">Export</button>
+            <button id="export-cancel" type="button" hidden>Cancel</button>
           </div>
           <progress id="export-progress" max="1" value="0" hidden></progress>
           <p id="export-status" class="hint" role="status"></p>
           <div id="export-result" class="export-result" hidden>
-            <img id="export-image" alt="Exported GIF" />
-            <a id="export-link">Download GIF</a>
+            <img id="export-image" alt="Exported animation" />
+            <video
+              id="export-video"
+              aria-label="Exported video"
+              autoplay
+              loop
+              muted
+              playsinline
+              hidden
+            ></video>
+            <a id="export-link">Download</a>
           </div>
         </section>
       </aside>

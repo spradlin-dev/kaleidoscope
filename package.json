@@ -14,7 +14,8 @@
     "check": "tsc --noEmit && eslint . && prettier --check ."
   },
   "dependencies": {
-    "gifenc": "^1.0.3"
+    "gifenc": "^1.0.3",
+    "mediabunny": "^1.66.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -52,7 +52,7 @@ export class Scene {
   }
 
   /** RGBA, already flipped to top row first. */
-  capture(look: Look, t: number): Uint8Array {
+  capture(look: Look, t: number): Uint8Array<ArrayBuffer> {
     this.draw(look, t);
     const pixels = readCanvasPixels(this.gl, this.size);
     if (this.gl.isContextLost()) {

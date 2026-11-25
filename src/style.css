@@ -176,7 +176,8 @@ progress {
   gap: 0.4rem;
 }
 
-.export-result img {
+.export-result img,
+.export-result video {
   width: 100%;
   border-radius: 6px;
 }

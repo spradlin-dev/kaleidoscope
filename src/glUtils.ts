@@ -38,7 +38,7 @@ function compileShader(
 export function readCanvasPixels(
   gl: WebGL2RenderingContext,
   size: number,
-): Uint8Array {
+): Uint8Array<ArrayBuffer> {
   gl.bindFramebuffer(gl.FRAMEBUFFER, null);
   const bottomUp = new Uint8Array(size * size * 4);
   gl.readPixels(0, 0, size, size, gl.RGBA, gl.UNSIGNED_BYTE, bottomUp);
