@@ -68,6 +68,7 @@ export function createPaletteEditor(
 
   const addButton = document.createElement("button");
   addButton.type = "button";
+  addButton.className = "add-color";
   addButton.textContent = "Add color";
   addButton.addEventListener("click", () => {
     colors.push(randomHex());

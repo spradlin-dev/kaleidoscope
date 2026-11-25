@@ -27,7 +27,7 @@ const stageMessage = element<HTMLParagraphElement>("stage-message");
 const slicesInput = element<HTMLSelectElement>("slices");
 const piecesInput = element<HTMLInputElement>("pieces");
 const piecesValue = element<HTMLOutputElement>("pieces-value");
-const cellTurnsInput = element<HTMLSelectElement>("cell-turns");
+const rotationInput = element<HTMLInputElement>("rotation");
 const shadeVarietyInput = element<HTMLInputElement>("shade-variety");
 const glowInput = element<HTMLInputElement>("glow");
 const focusInput = element<HTMLInputElement>("focus");
@@ -81,7 +81,7 @@ function currentLook(): Look {
     borderColor,
     borderWidth: sliderFraction(borderWidthInput),
     slices: Number(slicesInput.value),
-    cellTurns: Number(cellTurnsInput.value),
+    cellTurns: rotationInput.checked ? 1 : 0,
   };
 }
 

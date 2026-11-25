@@ -48,14 +48,9 @@
             Pieces <output id="pieces-value"></output>
             <input id="pieces" type="range" min="50" max="800" value="400" />
           </label>
-          <label>
-            Tube turns per loop
-            <!-- Whole numbers only, or the loop jumps where it restarts. -->
-            <select id="cell-turns">
-              <option>0</option>
-              <option selected>1</option>
-              <option>2</option>
-            </select>
+          <label class="toggle">
+            <input id="rotation" type="checkbox" />
+            Rotation
           </label>
           <button id="new-pattern" type="button">New pattern</button>
         </section>
@@ -88,8 +83,12 @@
           <h2>Loop</h2>
           <label>
             Length <output id="loop-seconds-value"></output>
-            <input id="loop-seconds" type="range" min="2" max="30" value="6" />
+            <input id="loop-seconds" type="range" min="2" max="30" value="15" />
           </label>
+          <p class="hint">
+            All movement is timed to fit the loop exactly, so a longer loop
+            means slower movement. It also makes the GIF bigger.
+          </p>
         </section>
 
         <section>

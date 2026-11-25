@@ -62,6 +62,20 @@ label {
   font-size: 0.9rem;
 }
 
+label.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+label.toggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  accent-color: #8fc7ff;
+}
+
 select,
 input[type="text"],
 button {
@@ -125,6 +139,10 @@ button:disabled {
 .remove-color {
   width: 2.2rem;
   padding: 0;
+}
+
+.add-color {
+  margin-top: 0.6rem;
 }
 
 .hint {
