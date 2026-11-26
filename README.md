@@ -1,1 +1,1 @@
-[https://spradlin-dev.github.io/kaleidosope/](https://spradlin-dev.github.io/kaleidosope/)
+[https://spradlin-dev.github.io/kaleidoscope/](https://spradlin-dev.github.io/kaleidoscope/)
